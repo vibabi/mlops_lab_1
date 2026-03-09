@@ -1,0 +1,50 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+    - path: data/raw/creditcard.csv
+      hash: md5
+      md5: e90efcb83d69faf99fcab8b0255024de
+      size: 150828752
+    - path: src/prepare.py
+      hash: md5
+      md5: 0f14c265f4aca1ddabab64cf6171e3e5
+      size: 935
+    outs:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: 159ec9b924307f01c01a3af4f3a6bd61
+      size: 15081196
+    - path: data/processed/train.csv
+      hash: md5
+      md5: 822bac83daab379158cb844a898ebf4f
+      size: 120655500
+    - path: data/processed/val.csv
+      hash: md5
+      md5: 4e8583320414375fb458a6ac415259a2
+      size: 15081143
+  train:
+    cmd: python src/train.py --n_estimators 15 --max_depth 6
+    deps:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: 159ec9b924307f01c01a3af4f3a6bd61
+      size: 15081196
+    - path: data/processed/train.csv
+      hash: md5
+      md5: 822bac83daab379158cb844a898ebf4f
+      size: 120655500
+    - path: data/processed/val.csv
+      hash: md5
+      md5: 4e8583320414375fb458a6ac415259a2
+      size: 15081143
+    - path: src/train.py
+      hash: md5
+      md5: 6fd53516cde6df63fb222e076ef12b7a
+      size: 2576
+    outs:
+    - path: models/val_confusion_matrix.png
+      hash: md5
+      md5: 90ab51f410baa2e21ab0e0c7e0d3b64b
+      size: 11696

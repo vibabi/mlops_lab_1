@@ -1,0 +1,20 @@
+stages:
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+      - src/prepare.py
+      - data/raw/creditcard.csv
+    outs:
+      - data/processed/train.csv
+      - data/processed/val.csv
+      - data/processed/test.csv
+
+  train:
+    cmd: python src/train.py --n_estimators 15 --max_depth 6
+    deps:
+      - src/train.py
+      - data/processed/train.csv
+      - data/processed/val.csv
+      - data/processed/test.csv
+    outs:
+      - models/val_confusion_matrix.png
