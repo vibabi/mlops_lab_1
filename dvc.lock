@@ -41,8 +41,8 @@ stages:
       size: 15081143
     - path: src/train.py
       hash: md5
-      md5: 6fd53516cde6df63fb222e076ef12b7a
-      size: 2576
+      md5: 463d40612a7012af13b8a81d4fc990d8
+      size: 2605
     outs:
     - path: models/val_confusion_matrix.png
       hash: md5

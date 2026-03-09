@@ -62,3 +62,5 @@ if __name__ == "__main__":
     parser.add_argument("--max_depth", type=int, default=5)
     args = parser.parse_args()
     main(args.n_estimators, args.max_depth)
+
+print('Something changed!')
