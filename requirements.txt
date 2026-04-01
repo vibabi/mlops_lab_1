@@ -5,6 +5,9 @@ matplotlib
 seaborn
 mlflow
 jupyter
-ptuna
+optuna
 hydra-core
 omegaconf
+joblib
+pytest
+flake8
